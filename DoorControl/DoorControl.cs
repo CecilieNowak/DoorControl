@@ -69,7 +69,6 @@ namespace DoorControlProject
             {
                 case State.DoorClosing:
                     _doorState = State.DoorClosed;
-                    _doorState = State.DoorClosed;
                     break;
             }
         }
