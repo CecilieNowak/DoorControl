@@ -17,45 +17,45 @@ namespace DoorControlProject.Test
             _uut = new DoorControl(_mockFactory);
 
             //Setup for user TFJ to be allowed
-            _mockFactory.CreateUserValidation().ValidateEntryRequest("TJF").Returns(true);
+            _mockFactory.CreateUserValidation().ValidateEntryRequest("TFJ").Returns(true);
         }
 
-        [Test]
+        [Test] //1
         public void RequestEntry_CorrectIdUsedForDbQuery()
         {
             _uut.RequestEntry("TFJ");
             _mockFactory.CreateUserValidation().Received(1).ValidateEntryRequest(("TFJ"));
         }
         
-        [Test]
+        [Test] //2
         public void RequestEntry_CardDbApprovesEntryRequest_DoorOpenCalled()
         {
             _uut.RequestEntry("TFJ");
             _mockFactory.CreateDoor().Received(1).Open();
         }
 
-        [Test]
+        [Test] //3
         public void RequestEntry_CardDbApprovesEntryRequest_DoorCloseNotCalled()
         {
             _uut.RequestEntry("TFJ");
             _mockFactory.CreateDoor().Received(0).Close();
         }
 
-        [Test]
+        [Test] //4
         public void RequestEntry_CardDbApprovesEntryRequest_BeeperMakeHappyNoiseNotCalled()
         {
             _uut.RequestEntry("TFJ");
             _mockFactory.createEntryNotification().Received(1).NotifyEntryGranted();
         }
 
-        [Test]
+        [Test] //5
         public void RequestEntry_CardDbApprovesEntryRequest_BeeperMakeUnhappyNoiseNotCalled()
         {
             _uut.RequestEntry("TFJ");
             _mockFactory.createEntryNotification().Received(0).NotifyEntryDenied();
         }
 
-        [Test]
+        [Test] //6
         public void RequestEntry_DoorOpened_DoorIsClosed()
         {
             _uut.RequestEntry("TFJ");
@@ -63,7 +63,7 @@ namespace DoorControlProject.Test
             _mockFactory.CreateDoor().Received(1).Close();
         }
 
-        [Test]
+        [Test] //7
         public void RequestEntry_DoorOpenedAndClosed_AlarmNotSounded()
         {
             _uut.RequestEntry("TFJ");

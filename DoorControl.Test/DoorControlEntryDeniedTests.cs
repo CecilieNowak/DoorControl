@@ -30,7 +30,7 @@ namespace DoorControlProject.Test
         public void RequestEntry_CardDbDeniesEntryRequest_BeeperMakeUnhappyNoiseCalled()
         {
             _uut.RequestEntry("TFJ");
-            _mockFactory.createEntryNotification().Received().NotifyEntryGranted();
+            _mockFactory.createEntryNotification().Received().NotifyEntryDenied();
             }
 
         [Test]

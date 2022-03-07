@@ -10,6 +10,7 @@ namespace DoorControlProject
         private readonly IDoor _door;
         private readonly IEntryNotification _entryNotification;
         private readonly IAlarm _alarm;
+
         public enum State
         {
             DoorClosed,
@@ -19,6 +20,7 @@ namespace DoorControlProject
         };
 
         private State _doorState;
+
         public DoorControl(IDoorControlFactory factory)
         {
             _userValidation = factory.CreateUserValidation();
@@ -73,6 +75,6 @@ namespace DoorControlProject
             }
         }
     }
-
-
 }
+
+
