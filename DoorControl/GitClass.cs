@@ -9,6 +9,12 @@ namespace DoorControlProject
         public GitClass()
         {
             Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
     }
